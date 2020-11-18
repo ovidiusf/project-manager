@@ -13,11 +13,15 @@
         >
           <v-card flat class="text-center ma-3" color="blue-grey lighten-1">
             <v-responsive class="pt-4">
-              image here
+              <v-avatar size="100" class="grey lighten-2">
+                <img :src="person.avatar" :alt="person.name">
+              </v-avatar>
             </v-responsive>
             <v-card-text>
               <div class="text-h6  white--text">{{ person.name }}</div>
-              <div class="text-subheading purple--text text--lighten-5">{{ person.role }}</div>
+              <div class="text-subheading purple--text text--lighten-5">
+                {{ person.role }}
+              </div>
             </v-card-text>
             <v-card-actions>
               <v-btn flat color="grey">
@@ -37,11 +41,31 @@ export default {
   data() {
     return {
       team: [
-        { name: "John Smithson", role: "Web Dev" },
-        { name: "Rikuta Dolara", role: "Graphic Designer" },
-        { name: "Magnus Torus", role: "Web Dev" },
-        { name: "Chung Li", role: "Social Media Jack of All Trades" },
-        { name: "Yuri Spadasin", role: "Sales Master" }
+        {
+          name: "John Smithson",
+          role: "Web Dev",
+          avatar: "/assets/avatar-1.jpg"
+        },
+        {
+          name: "Rikuta Dolara",
+          role: "Graphic Designer",
+          avatar: "/assets/avatar-2.jpg"
+        },
+        {
+          name: "Magnus Torus",
+          role: "Web Dev",
+          avatar: "/assets/avatar-3.jpg"
+        },
+        {
+          name: "Chung Li",
+          role: "Social Media Jack of All Trades",
+          avatar: "/assets/avatar-4.jpg"
+        },
+        {
+          name: "Yuri Spadasin",
+          role: "Sales Master",
+          avatar: "/assets/avatar-5.jpg"
+        }
       ]
     };
   }

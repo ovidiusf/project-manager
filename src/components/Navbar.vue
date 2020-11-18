@@ -17,6 +17,14 @@
     </v-app-bar>
 
     <v-navigation-drawer v-model="drawer" app bottom class="primary" temporary>
+      <v-row dense>
+        <v-col class="mt-5" align="center">
+          <v-avatar size="100">
+            <img src="/assets/avatar-1.jpg" alt="Admin">
+          </v-avatar>
+          <p class="white--text text-subheading mt-1">John Smithson</p>
+        </v-col>
+      </v-row>
       <v-list>
         <v-list-item
           v-for="link in links"
