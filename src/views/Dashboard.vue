@@ -21,9 +21,18 @@
             <div class="text-h5 white--text">Due by</div>
             <div>{{ project.due }}</div>
           </v-col>
-          <v-col cols="6" sm="4" md="2">
-            <div class="text-h5 white--text">Status</div>
-            <div>{{ project.status }}</div>
+          <v-col
+            cols="6"
+            sm="4"
+            md="2"
+            class="d-flex justify-center align-center"
+          >
+            <v-chip
+              small
+              :color="chipColor(project.status)"
+              class="white--text text-caption"
+              >{{ project.status }}
+            </v-chip>
           </v-col>
         </v-row>
         <v-divider></v-divider>
@@ -73,11 +82,25 @@ export default {
         }
       ]
     };
+  },
+  methods: {
+    chipColor(status) {
+      const statusColors = {
+        complete: "#3cd1c2",
+        ongoing: "orange",
+        overdue: "#FF8A80",
+        default: "indigo"
+      };
+
+      return status in statusColors
+        ? statusColors[status]
+        : statusColors.default;
+    }
   }
 };
 </script>
 
-<style>
+<style scoped>
 .project.complete {
   border-left: 4px solid #3cd1c2;
 }
@@ -85,6 +108,6 @@ export default {
   border-left: 4px solid orange;
 }
 .project.overdue {
-  border-left: 4px solid tomato;
+  border-left: 4px solid #ff8a80;
 }
 </style>
