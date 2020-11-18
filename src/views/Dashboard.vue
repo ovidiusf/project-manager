@@ -3,15 +3,41 @@
     <h1 class="text-h4 grey--text">Dashboard</h1>
     <v-container class="my-5">
       <v-row class="mb-3" dense>
-        <v-btn small flat color="grey" outlined @click="sortBy('title')">
-          <v-icon left small color="blue-grey">folder</v-icon>
-          <span class="text-caption text-lowercase">By project name</span>
-        </v-btn>
+        <v-tooltip top>
+          <template v-slot:activator="{ on, attrs }">
+            <v-btn
+              small
+              flat
+              color="grey"
+              outlined
+              @click="sortBy('title')"
+              v-bind="attrs"
+              v-on="on"
+            >
+              <v-icon color="blue-grey" left small>folder</v-icon>
+              <span class="text-caption text-lowercase">By project name</span>
+            </v-btn>
+          </template>
+          <span>Sort by project title</span>
+        </v-tooltip>
         <v-divider vertical></v-divider>
-        <v-btn small flat color="grey" outlined @click="sortBy('person')">
-          <v-icon left small color="blue-grey">person</v-icon>
-          <span class="text-caption text-lowercase">By person name</span>
-        </v-btn>
+        <v-tooltip top>
+          <template v-slot:activator="{ on, attrs }">
+            <v-btn
+              small
+              flat
+              color="grey"
+              outlined
+              @click="sortBy('person')"
+              v-bind="attrs"
+              v-on="on"
+            >
+              <v-icon left small color="blue-grey">person</v-icon>
+              <span class="text-caption text-lowercase">By person name</span>
+            </v-btn>
+          </template>
+          <span>Sort by person name</span>
+        </v-tooltip>
       </v-row>
       <v-card
         color="blue-grey lighten-1"
