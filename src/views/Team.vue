@@ -1,7 +1,7 @@
 <template>
   <div class="Team">
-    <h1 class="text-h4 grey--text">Team</h1>
-    <v-container class="my-5">
+    <v-container class="my-2">
+      <h1 class="text-h4 grey--text my-5">Team</h1>
       <v-row wrap dense>
         <v-col
           cols="12"
@@ -37,13 +37,13 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapState } from 'vuex';
 export default {
   data() {
     return {};
   },
   computed: {
-    ...mapState(["team"])
+    ...mapState(['team'])
   }
 };
 </script>

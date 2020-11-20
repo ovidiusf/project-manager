@@ -1,36 +1,36 @@
-import Vue from "vue";
-import VueRouter from "vue-router";
-import Dashboard from "../views/Dashboard.vue";
+import Vue from 'vue';
+import VueRouter from 'vue-router';
+import Dashboard from '../views/Dashboard.vue';
 
 Vue.use(VueRouter);
 
 const routes = [
   {
-    path: "/",
-    name: "Dashboard",
+    path: '/',
+    name: 'Dashboard',
     component: Dashboard
   },
   {
-    path: "/projects",
-    name: "Projects",
+    path: '/projects',
+    name: 'Projects',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () =>
-      import(/* webpackChunkName: "Projects" */ "../views/Projects.vue")
+      import(/* webpackChunkName: "Projects" */ '../views/Projects.vue')
   },
   {
-    path: "/team",
-    name: "Team",
+    path: '/team',
+    name: 'Team',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "Team" */ "../views/Team.vue")
+    component: () => import(/* webpackChunkName: "Team" */ '../views/Team.vue')
   }
 ];
 
 const router = new VueRouter({
-  mode: "history",
+  mode: 'history',
   base: process.env.BASE_URL,
   routes
 });

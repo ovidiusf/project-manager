@@ -1,13 +1,13 @@
 <template>
   <div class="home">
-    <h1 class="text-h4 grey--text">Dashboard</h1>
-    <v-container class="my-5">
+    <v-container class="my-2">
+      <h1 class="text-h4 grey--text my-5">Dashboard</h1>
       <v-row class="mb-3" dense>
         <v-tooltip top>
           <template v-slot:activator="{ on, attrs }">
             <v-btn
               small
-              flat
+              text
               color="grey"
               outlined
               @click="sortBy('title')"
@@ -25,7 +25,7 @@
           <template v-slot:activator="{ on, attrs }">
             <v-btn
               small
-              flat
+              text
               color="grey"
               outlined
               @click="sortBy('person')"
@@ -79,19 +79,19 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
-import { STATUS_COLORS } from "../utils/constants.js";
+import { mapState } from 'vuex';
+import { STATUS_COLORS } from '../utils/constants.js';
 
 // @ is an alias to /src
 export default {
-  name: "Dashboard",
+  name: 'Dashboard',
   data() {
     return {
       statusColors: STATUS_COLORS
     };
   },
   computed: {
-    ...mapState(["projects"])
+    ...mapState(['projects'])
   },
   methods: {
     /**

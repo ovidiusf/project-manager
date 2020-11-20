@@ -1,8 +1,7 @@
 <template>
   <div class="projects">
-    <h1 class="text-h4 grey--text">Projects</h1>
-
-    <v-container class="my-5">
+    <v-container class="my-2">
+      <h1 class="text-h4 grey--text my-5">Projects</h1>
       <v-expansion-panels>
         <v-expansion-panel v-for="project in myProjects" :key="project.title">
           <v-expansion-panel-header>
@@ -21,17 +20,17 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapState } from 'vuex';
 
 export default {
   computed: {
-    ...mapState(["projects", "currentUser"]),
+    ...mapState(['projects', 'currentUser']),
     /**
      * Return only the projects for the current user
      */
     myProjects() {
       return this.projects.filter(
-        project => project.person === this.currentUser
+        (project) => project.person === this.currentUser
       );
     }
   }
