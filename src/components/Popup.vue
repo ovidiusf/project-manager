@@ -51,6 +51,8 @@
 
 <script>
 import format from 'date-fns/format';
+import { mapState } from 'vuex';
+import db from '../fb.js';
 
 export default {
   name: 'Popup',
@@ -65,11 +67,27 @@ export default {
   methods: {
     submitForm() {
       if (this.$refs.form.validate()) {
-        console.log(this.title, this.content);
+        const project = {
+          title: this.title,
+          content: this.content,
+          due: format(new Date(this.due), 'do MMM yyyy'),
+          person: this.currentUser,
+          status: 'ongoing'
+        };
+
+        db.collection('projects')
+          .add(project)
+          .then(docRef => {
+            console.log('added to db', docRef.id);
+          })
+          .catch(error => {
+            console.error('Error adding document: "', error);
+          });
       }
     }
   },
   computed: {
+    ...mapState(['currentUser']),
     formattedDate() {
       return this.due ? format(new Date(this.due), 'do MMM yyyy') : '';
     }

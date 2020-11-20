@@ -30,7 +30,7 @@ export default {
      */
     myProjects() {
       return this.projects.filter(
-        (project) => project.person === this.currentUser
+        project => project.person === this.currentUser
       );
     }
   }
