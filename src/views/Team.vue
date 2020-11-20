@@ -24,7 +24,7 @@
               </div>
             </v-card-text>
             <v-card-actions>
-              <v-btn flat color="grey">
+              <v-btn text color="grey">
                 <v-icon small left color="white">message</v-icon>
                 <span class="white--text">Message</span>
               </v-btn>
