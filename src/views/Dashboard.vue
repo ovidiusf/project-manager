@@ -79,53 +79,19 @@
 </template>
 
 <script>
-const statusColors = {
-  complete: "#3cd1c2",
-  ongoing: "orange",
-  overdue: "#FF8A80",
-  default: "indigo"
-};
+import { mapState } from "vuex";
+import { STATUS_COLORS } from "../utils/constants.js";
+
 // @ is an alias to /src
 export default {
   name: "Dashboard",
   data() {
     return {
-      projects: [
-        {
-          title: "Design a new website",
-          person: "John Smithson",
-          due: "1st Jan 2021",
-          status: "ongoing",
-          content:
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt consequuntur eos eligendi illum minima adipisci deleniti, dicta mollitia enim explicabo fugiat quidem ducimus praesentium voluptates porro molestias non sequi animi!"
-        },
-        {
-          title: "Code up the homepage",
-          person: "Chung Loi",
-          due: "10th Jan 2021",
-          status: "complete",
-          content:
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt consequuntur eos eligendi illum minima adipisci deleniti, dicta mollitia enim explicabo fugiat quidem ducimus praesentium voluptates porro molestias non sequi animi!"
-        },
-        {
-          title: "Design video thumbnails",
-          person: "Bertha",
-          due: "20th Dec 2020",
-          status: "complete",
-          content:
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt consequuntur eos eligendi illum minima adipisci deleniti, dicta mollitia enim explicabo fugiat quidem ducimus praesentium voluptates porro molestias non sequi animi!"
-        },
-        {
-          title: "Create a community forum",
-          person: "Hadouken",
-          due: "20th Oct 2020",
-          status: "overdue",
-          content:
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt consequuntur eos eligendi illum minima adipisci deleniti, dicta mollitia enim explicabo fugiat quidem ducimus praesentium voluptates porro molestias non sequi animi!"
-        }
-      ],
-      statusColors: statusColors
+      statusColors: STATUS_COLORS
     };
+  },
+  computed: {
+    ...mapState(["projects"])
   },
   methods: {
     /**

@@ -20,9 +20,9 @@
       <v-row dense>
         <v-col class="mt-5" align="center">
           <v-avatar size="100">
-            <img src="/assets/avatar-1.jpg" alt="Admin">
+            <img src="/assets/avatar-1.jpg" alt="currentUser" />
           </v-avatar>
-          <p class="white--text text-subheading mt-1">John Smithson</p>
+          <p class="white--text text-subheading mt-1">{{ currentUser }}</p>
         </v-col>
       </v-row>
       <v-list>
@@ -47,6 +47,7 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
 export default {
   data() {
     return {
@@ -57,6 +58,9 @@ export default {
         { icon: "person", text: "Team", route: "/team" }
       ]
     };
+  },
+  computed: {
+    ...mapState(["currentUser"])
   }
 };
 </script>

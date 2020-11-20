@@ -1,21 +1,39 @@
 <template>
   <div class="projects">
     <h1 class="text-h4 grey--text">Projects</h1>
+
     <v-container class="my-5">
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab porro maxime
-        ea quo corrupti exercitationem officiis nostrum? Rerum optio inventore
-        debitis magni repellat magnam sapiente labore ipsum dicta amet. Placeat!
-        lit. Ab porro maxime ea quo corrupti exercitationem officiis nostrum?
-        Rerum optio inventore debitis m lit. Ab porro maxime ea quo corrupti
-        exercitationem officiis nostrum? Rerum optio inventore debitis m
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi soluta
-        est voluptate placeat cupiditate eveniet iure magni iusto eos.
-        Explicabo, consequatur! Ipsam distinctio sunt iusto eligendi sequi eius.
-        Nemo, excepturi.
-      </p>
+      <v-expansion-panels>
+        <v-expansion-panel v-for="project in myProjects" :key="project.title">
+          <v-expansion-panel-header>
+            {{ project.title }}
+          </v-expansion-panel-header>
+          <v-expansion-panel-content class="px-4 grey--text">
+            <div class="font-weight-bold">due by {{ project.due }}</div>
+            <div>
+              {{ project.content }}
+            </div>
+          </v-expansion-panel-content>
+        </v-expansion-panel>
+      </v-expansion-panels>
     </v-container>
   </div>
 </template>
+
+<script>
+import { mapState } from "vuex";
+
+export default {
+  computed: {
+    ...mapState(["projects", "currentUser"]),
+    /**
+     * Return only the projects for the current user
+     */
+    myProjects() {
+      return this.projects.filter(
+        project => project.person === this.currentUser
+      );
+    }
+  }
+};
+</script>
