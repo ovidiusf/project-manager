@@ -3,7 +3,7 @@
     <v-container class="my-2">
       <h1 class="text-h4 grey--text my-5">Projects</h1>
       <v-expansion-panels>
-        <v-expansion-panel v-for="project in myProjects" :key="project.title">
+        <v-expansion-panel v-for="project in myProjects" :key="project.id">
           <v-expansion-panel-header>
             {{ project.title }}
           </v-expansion-panel-header>
@@ -21,10 +21,17 @@
 
 <script>
 import { mapState } from 'vuex';
+import db from '../fb.js';
+import { populateOrRefreshDB } from '../utils/functions.js';
 
 export default {
+  data() {
+    return {
+      projects: []
+    };
+  },
   computed: {
-    ...mapState(['projects', 'currentUser']),
+    ...mapState(['currentUser']),
     /**
      * Return only the projects for the current user
      */
@@ -33,6 +40,9 @@ export default {
         project => project.person === this.currentUser
       );
     }
+  },
+  created() {
+    populateOrRefreshDB(db, this.projects);
   }
 };
 </script>

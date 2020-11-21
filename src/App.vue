@@ -9,7 +9,6 @@
 
 <script>
 import Navbar from '@/components/Navbar.vue';
-import { mapActions } from 'vuex';
 
 export default {
   name: 'App',
@@ -17,11 +16,7 @@ export default {
     Navbar
   },
   data: () => ({}),
-  methods: {
-    ...mapActions(['getProjects'])
-  },
-  mounted() {
-    this.getProjects();
-  }
+  methods: {},
+  mounted() {}
 };
 </script>

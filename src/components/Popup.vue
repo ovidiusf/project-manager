@@ -90,7 +90,7 @@ export default {
           .then(() => {
             this.loading = false;
             this.dialog = false;
-            this.addProject(project);
+            // this.addProject(project);
             this.$emit('project-added');
           })
           .catch(error => {

@@ -43,7 +43,7 @@
         color="blue-grey lighten-1"
         flat
         v-for="project in projects"
-        :key="project.title"
+        :key="project.id"
       >
         <v-row :class="`pa-3 project ${project.status}`" wrap dense>
           <v-col cols="12" md="6">
@@ -79,19 +79,18 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
 import { STATUS_COLORS } from '../utils/constants.js';
+import { populateOrRefreshDB } from '../utils/functions.js';
+import db from '../fb.js';
 
 // @ is an alias to /src
 export default {
   name: 'Dashboard',
   data() {
     return {
-      statusColors: STATUS_COLORS
+      statusColors: STATUS_COLORS,
+      projects: []
     };
-  },
-  computed: {
-    ...mapState(['projects'])
   },
   methods: {
     /**
@@ -108,6 +107,9 @@ export default {
     sortBy(property) {
       this.projects.sort((a, b) => (a[property] < b[property] ? -1 : 1));
     }
+  },
+  created() {
+    populateOrRefreshDB(db, this.projects);
   }
 };
 </script>

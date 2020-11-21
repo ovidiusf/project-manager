@@ -1,12 +1,10 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import db from '../fb.js';
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    projects: [],
     currentUser: 'Ovidiu F',
     team: [
       {
@@ -36,25 +34,7 @@ export default new Vuex.Store({
       }
     ]
   },
-  mutations: {
-    setProjects(state, payload) {
-      state.projects = payload;
-    },
-    addProject(state, payload) {
-      state.projects.push(payload);
-    }
-  },
-  actions: {
-    async getProjects() {
-      let allProjects = [];
-      const projectsCollection = db.collection('projects');
-      const dbProjects = await projectsCollection.get();
-      for (let project of dbProjects.docs) {
-        allProjects.push(project.data());
-      }
-
-      this.commit('setProjects', allProjects);
-    }
-  },
+  mutations: {},
+  actions: {},
   modules: {}
 });
