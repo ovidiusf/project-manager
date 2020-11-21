@@ -9,11 +9,19 @@
 
 <script>
 import Navbar from '@/components/Navbar.vue';
+import { mapActions } from 'vuex';
+
 export default {
   name: 'App',
   components: {
     Navbar
   },
-  data: () => ({})
+  data: () => ({}),
+  methods: {
+    ...mapActions(['getProjects'])
+  },
+  mounted() {
+    this.getProjects();
+  }
 };
 </script>

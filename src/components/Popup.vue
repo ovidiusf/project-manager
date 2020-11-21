@@ -1,5 +1,5 @@
 <template>
-  <v-dialog max-width="600px">
+  <v-dialog max-width="600px" v-model="dialog">
     <template v-slot:activator="{ on, attrs }">
       <v-btn text class="success" color="white" v-bind="attrs" v-on="on">
         Add new project
@@ -40,7 +40,12 @@
           </v-menu>
           <v-spacer></v-spacer>
 
-          <v-btn text class="success mx-0 mt-3" @click="submitForm">
+          <v-btn
+            text
+            class="success mx-0 mt-3"
+            :loading="loading"
+            @click="submitForm"
+          >
             Add project
           </v-btn>
         </v-form>
@@ -51,7 +56,7 @@
 
 <script>
 import format from 'date-fns/format';
-import { mapState } from 'vuex';
+import { mapState, mapMutations } from 'vuex';
 import db from '../fb.js';
 
 export default {
@@ -61,12 +66,17 @@ export default {
       title: '',
       content: '',
       due: null,
-      inputRules: [v => v.length >= 3 || 'Minimum length is 3 characters']
+      inputRules: [v => v.length >= 3 || 'Minimum length is 3 characters'],
+      loading: false,
+      dialog: false
     };
   },
   methods: {
+    ...mapMutations(['addProject']),
     submitForm() {
       if (this.$refs.form.validate()) {
+        this.loading = true;
+
         const project = {
           title: this.title,
           content: this.content,
@@ -77,8 +87,11 @@ export default {
 
         db.collection('projects')
           .add(project)
-          .then(docRef => {
-            console.log('added to db', docRef.id);
+          .then(() => {
+            this.loading = false;
+            this.dialog = false;
+            this.addProject(project);
+            this.$emit('project-added');
           })
           .catch(error => {
             console.error('Error adding document: "', error);

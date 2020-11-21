@@ -1,52 +1,12 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import db from '../fb.js';
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    projects: [
-      {
-        title: 'Design a new website',
-        person: 'Ovidiu F',
-        due: '1st Jan 2021',
-        status: 'ongoing',
-        content:
-          'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt consequuntur eos eligendi illum minima adipisci deleniti, dicta mollitia enim explicabo fugiat quidem ducimus praesentium voluptates porro molestias non sequi animi!'
-      },
-      {
-        title: 'Code up the homepage',
-        person: 'Chung Loi',
-        due: '10th Jan 2021',
-        status: 'complete',
-        content:
-          'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt consequuntur eos eligendi illum minima adipisci deleniti, dicta mollitia enim explicabo fugiat quidem ducimus praesentium voluptates porro molestias non sequi animi!'
-      },
-      {
-        title: 'Design video thumbnails',
-        person: 'Bertha',
-        due: '20th Dec 2020',
-        status: 'complete',
-        content:
-          'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt consequuntur eos eligendi illum minima adipisci deleniti, dicta mollitia enim explicabo fugiat quidem ducimus praesentium voluptates porro molestias non sequi animi!'
-      },
-      {
-        title: 'Create a community forum',
-        person: 'Hadouken',
-        due: '20th Oct 2020',
-        status: 'overdue',
-        content:
-          'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt consequuntur eos eligendi illum minima adipisci deleniti, dicta mollitia enim explicabo fugiat quidem ducimus praesentium voluptates porro molestias non sequi animi!'
-      },
-      {
-        title: 'Create a new website for company X',
-        person: 'Ovidiu F',
-        due: '22nd Jan 2021',
-        status: 'ongoing',
-        content:
-          'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt consequuntur eos eligendi illum minima adipisci deleniti, dicta mollitia enim explicabo fugiat quidem ducimus praesentium voluptates porro molestias non sequi animi!'
-      }
-    ],
+    projects: [],
     currentUser: 'Ovidiu F',
     team: [
       {
@@ -76,7 +36,25 @@ export default new Vuex.Store({
       }
     ]
   },
-  mutations: {},
-  actions: {},
+  mutations: {
+    setProjects(state, payload) {
+      state.projects = payload;
+    },
+    addProject(state, payload) {
+      state.projects.push(payload);
+    }
+  },
+  actions: {
+    async getProjects() {
+      let allProjects = [];
+      const projectsCollection = db.collection('projects');
+      const dbProjects = await projectsCollection.get();
+      for (let project of dbProjects.docs) {
+        allProjects.push(project.data());
+      }
+
+      this.commit('setProjects', allProjects);
+    }
+  },
   modules: {}
 });
