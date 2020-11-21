@@ -12,6 +12,10 @@ This project involves the following technologies:
 - Vuetify
 - Cloud Firestore
 
+## Future Enhancements
+
+- Add other FireStore capabilities
+
 ## Project setup
 
 ```
