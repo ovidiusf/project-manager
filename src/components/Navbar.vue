@@ -45,7 +45,7 @@
       <v-row dense>
         <v-col class="mt-5" align="center">
           <v-avatar size="100">
-            <img src="/assets/avatar-1.jpg" alt="currentUser" />
+            <img src="./assets/avatar-1.jpg" alt="currentUser" />
           </v-avatar>
           <p class="white--text text-subheading mt-1">{{ currentUser }}</p>
         </v-col>
