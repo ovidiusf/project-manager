@@ -10,27 +10,27 @@ export default new Vuex.Store({
       {
         name: 'Ovidiu F',
         role: 'Web Dev',
-        avatar: '/assets/avatar-1.jpg'
+        avatar: './assets/avatar-1.jpg'
       },
       {
         name: 'Rikuta Dolara',
         role: 'Graphic Designer',
-        avatar: '/assets/avatar-5.jpg'
+        avatar: './assets/avatar-5.jpg'
       },
       {
         name: 'Magnus Torus',
         role: 'Web Dev',
-        avatar: '/assets/avatar-3.jpg'
+        avatar: './assets/avatar-3.jpg'
       },
       {
         name: 'Chung Li',
         role: 'Social Media Jack of All Trades',
-        avatar: '/assets/avatar-4.jpg'
+        avatar: './assets/avatar-4.jpg'
       },
       {
         name: 'Yuri Spadasin',
         role: 'Sales Master',
-        avatar: '/assets/avatar-2.jpg'
+        avatar: './assets/avatar-2.jpg'
       }
     ]
   },
