@@ -6,6 +6,7 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     currentUser: 'Ovidiu F',
+    currentUserAvatar: './assets/avatar-1.jpg',
     team: [
       {
         name: 'Ovidiu F',
