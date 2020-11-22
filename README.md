@@ -12,6 +12,10 @@ This project involves the following technologies:
 - Vuetify
 - Cloud Firestore
 
+## Usage
+
+For personal usage, replace the firebase config with your own.
+
 ## Future Enhancements
 
 - Add other FireStore capabilities
